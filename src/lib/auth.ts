@@ -39,38 +39,47 @@ export const authOptions: NextAuthOptions = {
           organization: user.organization
         }
 
-        return sanitizedUser;
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          roles: user.roles,
+          organization: user.organization
+        }
       }
     }),
   ],
    callbacks: {
-    session: ({ session, token }) => {
-      // console.log("Session Callback", { session, token }) 
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.id,
-          roles: token.roles,
-          oraganization: token.organization
-        },
-      };
-    },
-    jwt: ({ token, user }) => {
-      // console.log("JWT Callback", { token, user });
-      if (user) {
-        const u = user as User;
+     jwt:({ token, user }) => {
+      //  console.log("JWT Callback", { token, user});
+      const u = user as User;
+       if (user) {
+        // console.log("found")
+         return {
+           ...token,
+           id: u.id,
+           name: u.name,
+           email: u.email,
+           roles: u.roles,
+           organization: u.organization,
+          };
+        }
+        // console.log("here")
+        return token;
+      },
+      session: ({ session, token}) => {
+        // console.log("Session Callback", { session, token})
+         
         return {
-          ...token,
-          id: u.id,
-          name: u.name,
-          email: u.email,
-          roles: u.roles,
-          organization: u.organization,
+          ...session,
+          user: {
+            ...session.user,
+            id: token.id,
+            roles: token.roles,
+            organization: token.organization
+          },
         };
-      }
-      return token;
+      },
     },
-  },
-};
+  };
 

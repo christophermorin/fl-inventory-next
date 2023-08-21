@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export const LoginButton = () => {
   return (
-    <button style={{ marginRight: 10 }} onClick={() => signIn()}>
+    <button style={{ marginRight: 10 }} onClick={() => signIn(undefined, {callbackUrl: "/dashboard"})}>
       Sign in
     </button>
   );
@@ -28,5 +28,5 @@ export const LogoutButton = () => {
 };
 
 export const ProfileButton = () => {
-  return <Link href="/profile">Profile</Link>;
+  return <Link href="/dashboard">Dashboard</Link>;
 };

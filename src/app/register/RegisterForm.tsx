@@ -20,7 +20,8 @@ export function RegisterForm () {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      const res = await axios.post("https://fl-nextauth.vercel.app/api/register/", formValues)
+      // const res = await axios.post("https://fl-nextauth.vercel.app/api/register/", formValues)
+      
     } catch (error: any) {
       // I don't want this as any
       // Store errors in a state?
