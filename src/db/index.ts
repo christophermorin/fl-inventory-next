@@ -16,6 +16,10 @@ const config = {
 
 export const pool = new Pool(config);
 
+// Instead of this, which opens and closes a db connection on every query
+// I think I can have the pool connent external to the serveless func I'm calling, and the client release inside func once the query is returned?
+// Is that any different than what I'm doing now?
+
 export const query = async (config: QueryConfig): Promise<QueryResult> => {
   const client = await pool.connect()
   try {
