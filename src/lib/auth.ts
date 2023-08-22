@@ -54,7 +54,6 @@ export const authOptions: NextAuthOptions = {
       //  console.log("JWT Callback", { token, user});
       const u = user as User;
        if (user) {
-        // console.log("found")
          return {
            ...token,
            id: u.id,
@@ -64,12 +63,11 @@ export const authOptions: NextAuthOptions = {
            organization: u.organization,
           };
         }
-        // console.log("here")
         return token;
       },
       session: ({ session, token}) => {
         // console.log("Session Callback", { session, token})
-         
+
         return {
           ...session,
           user: {

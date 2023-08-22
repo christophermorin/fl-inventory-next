@@ -1,4 +1,4 @@
-import { RegisterForm } from "./RegisterForm"
+import { RegisterForm } from "../../components/Forms/RegisterForm"
 export default async function Register() {
   return (
     <div>

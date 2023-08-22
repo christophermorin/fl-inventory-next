@@ -15,24 +15,32 @@ export default async function Home() {
 
   return (
     <main
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "70vh",
-      }}
+    // style={{
+    //   display: "flex",
+    //   justifyContent: "center",
+    //   alignItems: "center",
+    //   height: "70vh",
+    // }}
     >
-      <div>
-        <LoginButton />
-        <RegisterButton />
-        <LogoutButton />
-        <ProfileButton />
-
+      <header className="h-20 border border-red-300 p-4">
+        <nav className="h-full grid grid-cols-2 items-center">
+          <section>
+          <img></img>
+            FrontLine Inventory
+          </section>
+          <section className="flex justify-end">
+            <LoginButton />
+            <RegisterButton />
+            <LogoutButton />
+          </section>
+        </nav>
+      </header>
+   
         <h1>Server Session</h1>
         <pre>{JSON.stringify(session)}</pre>
-
         <User />
-      </div>
+
+     
     </main>
   );
 }

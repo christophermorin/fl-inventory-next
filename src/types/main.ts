@@ -22,3 +22,8 @@ export type User = {
 export type HashedUser = Omit<User, "id" | "roles" | "organization">;
 
 export type SanitizedUser = Omit<User, "password">;
+
+export type OrganizationSetup = {
+  userId: string,
+  organization: string
+}

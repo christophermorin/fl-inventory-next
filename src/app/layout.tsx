@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html className="h-full" lang="en">
+      <body className="h-full">
         <NextAuthProvider>
           {children}
         </NextAuthProvider>

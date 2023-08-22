@@ -24,3 +24,16 @@ export const registerUser = (user: HashedUser): QueryConfig => {
   console.log(config)
   return config;
 }
+
+export const updateUserOnCreateOrganizationQuery = (org_name: string, userId: string): QueryConfig => {
+  const text = `UPDATE users
+    SET roles = ARRAY[$1], organization = $2
+    WHERE id = $3;`
+
+  const config = {
+    text: text,
+    values: ["admin", org_name, userId]
+  }
+
+  return config;
+}
