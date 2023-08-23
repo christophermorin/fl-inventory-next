@@ -3,7 +3,7 @@ import { buildNewOrganizationQuery, isOrgUniueQuery } from "@/db/models/organiza
 
 export async function isUnique (org_name: string): Promise<boolean> {
     const result = await query(isOrgUniueQuery(org_name))
-    const exists: boolean = result.rows[0]
+    const {exists}: { exists: boolean } = result.rows[0]
     if(exists === true){
       throw new Error("Organization name must be unique");
     }

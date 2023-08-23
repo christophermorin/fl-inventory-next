@@ -30,7 +30,7 @@ export default function CreateOrgForm({ userId }: { userId: string | null }) {
         "http://localhost:3000/api/organization_setup/create",
         payload
       );
-      // await axios.get(`/api/auth/session?organization=${formValues.organization}`)
+      update({roles: "admin", organization: formValues.organization})
     } catch (error) {
       console.log(error);
     }

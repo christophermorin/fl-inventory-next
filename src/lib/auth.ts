@@ -39,20 +39,23 @@ export const authOptions: NextAuthOptions = {
           organization: user.organization
         }
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          roles: user.roles,
-          organization: user.organization
-        }
+        return sanitizedUser;
       }
     }),
   ],
    callbacks: {
-     jwt:({ token, user }) => {
-      //  console.log("JWT Callback", { token, user});
-      const u = user as User;
+     jwt:({ token, user, trigger, session }) => {
+       //  console.log("JWT Callback", { token, user});
+       // Handles updates
+       const u = user as User;
+       if (trigger === "update" && session){
+        return {
+          ...token,
+           roles: session.roles,
+           organization: session.organization,
+        }
+      }
+      // Handles Signin
        if (user) {
          return {
            ...token,
@@ -67,7 +70,6 @@ export const authOptions: NextAuthOptions = {
       },
       session: ({ session, token}) => {
         // console.log("Session Callback", { session, token})
-
         return {
           ...session,
           user: {

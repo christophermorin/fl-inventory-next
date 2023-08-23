@@ -20,7 +20,7 @@ export function RegisterForm () {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      const res = await axios.post("https://localhost:3000/api/register/", formValues)
+      const res = await axios.post("http://localhost:3000/api/register/", formValues)
       
     } catch (error: any) {
       // I don't want this as any
