@@ -1,51 +1,83 @@
-"use client"
-import { ChangeEvent, useState } from "react"
-import axios from "axios";  
+"use client";
+import { ChangeEvent, useState } from "react";
+import BaseInput from "../Inputs/BaseInputs";
+import { Button } from "@mui/base";
+import axios from "axios";
 
 type FormValue = {
-  name: string,
-  email: string,
-  password: string,
-  confirmation: string
-}
+  name: string;
+  email: string;
+  password: string;
+  confirmation: string;
+};
 
-export function RegisterForm () {
+export function RegisterForm() {
   const [formValues, setFormValues] = useState<FormValue>({
     name: "",
     email: "",
     password: "",
-    confirmation: ""
-  })
+    confirmation: "",
+  });
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/api/register/", formValues)
-      
+      const res = await axios.post(
+        "http://localhost:3000/api/register/",
+        formValues
+      );
     } catch (error: any) {
       // I don't want this as any
       // Store errors in a state?
-      console.log(error.response.data)
+      console.log(error.response.data);
     }
-  }
-  
+  };
+
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = event.target;
+    const { name, value } = event.target;
     setFormValues((prevValues) => ({
       ...prevValues,
-      [name]: value
-  }))
-}
-    
+      [name]: value,
+    }));
+  };
   return (
-    <div>
-    <form>
-      <input type="text" name="name" value={formValues.name} onChange={onChange}/>
-      <input type="email" name="email" value={formValues.email} onChange={onChange}/>
-      <input type="password" name="password" value={formValues.password} onChange={onChange}/>
-      <input type="password" name="confirmation" value={formValues.confirmation} onChange={onChange}/>
-    </form>
-    <button onClick={handleSubmit}>Click</button>
+    <div className="mt-4 flex flex-col items-center">
+      <form className="px-4 py-10 flex flex-col gap-4 shadow-md shadow-slate-300">
+        <BaseInput
+          type="text"
+          name="name"
+          value={formValues.name}
+          onChange={onChange}
+          placeholder="User name"
+          ariaLabel="User name"
+        />
+        <BaseInput
+          type="email"
+          name="email"
+          value={formValues.email}
+          onChange={onChange}
+          placeholder="Email"
+          ariaLabel="Email"
+        />
+        <BaseInput
+          type="password"
+          name="password"
+          value={formValues.password}
+          onChange={onChange}
+          placeholder="Password"
+          ariaLabel="Password"
+        />
+        <BaseInput
+          type="password"
+          name="confirmation"
+          value={formValues.confirmation}
+          onChange={onChange}
+          placeholder="Confirmation"
+          ariaLabel="Confirmation"
+        />
+      </form>
+      <Button className="
+          w-40 mt-4 cursor-pointer disabled:cursor-not-allowed text-md bg-black text-white rounded-md font-semibold px-4 py-2 border-none disabled:opacity-50" onClick={handleSubmit}>Register</Button>
     </div>
-  )
+  );
 }

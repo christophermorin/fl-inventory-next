@@ -25,6 +25,7 @@ export const authOptions: NextAuthOptions = {
          if (!credentials?.email || !credentials.password) {
           return null;
         }
+        console.log(credentials)
         const results = await query(findUniqueUser(credentials.email))
         const user: User = results.rows[0];
 
@@ -43,9 +44,12 @@ export const authOptions: NextAuthOptions = {
       }
     }),
   ],
+  pages: {
+      signIn: '/auth/signin',
+  },
    callbacks: {
      jwt:({ token, user, trigger, session }) => {
-       //  console.log("JWT Callback", { token, user});
+        // console.log("JWT Callback", { token, user});
        // Handles updates
        const u = user as User;
        if (trigger === "update" && session){
