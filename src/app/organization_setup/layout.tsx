@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "Join or Create a Organization",
 };
 
-export default function RegisterLayout({
+export default function OrgSetupLayout({
   children,
 }: {
   children: React.ReactNode;

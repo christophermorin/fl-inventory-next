@@ -22,6 +22,7 @@ export const query = async (config: QueryConfig): Promise<QueryResult> => {
     const result = await client.query(config);
     return result;
   } finally {
+    console.log("does this hit")
     client.release();
   }
 };

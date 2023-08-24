@@ -1,8 +1,11 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test'
+import path from 'path';
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000
 
+// STORAGE STATE
+export const STORAGE_STATE = path.join(__dirname, 'tests/utils/.auth/user.json');
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 const baseURL = `http://localhost:${PORT}`
 
@@ -46,10 +49,28 @@ const config: PlaywrightTestConfig = {
 
   projects: [
     {
-      name: 'Desktop Chrome',
+      name: "setup db",
+      testMatch: /global.setup\.ts/,
+      teardown: 'cleanup db',
+    },
+    {
+      name: 'cleanup db',
+      testMatch: /global.teardown\.ts/,
+    },
+    {
+      name: 'Logged in Desktop Chrome',
+      testMatch: '**/*.withUsers.spec.ts',
+      dependencies: ["setup db"],
       use: {
         ...devices['Desktop Chrome'],
       },
+    },
+    {
+      name: 'Desktop Chrome',
+      use: {
+      ...devices['Desktop Chrome']
+      },
+      testIgnore: ['**/*withUsers.spec.ts']
     },
     // {
     //   name: 'Desktop Firefox',
