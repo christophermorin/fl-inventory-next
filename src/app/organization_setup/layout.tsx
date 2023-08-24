@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import HeaderContainer from "@/components/Headers/HeaderContainer";
 import NavButton from "@/components/Buttons/NavButton";
-import SignInButton from "@/components/Buttons/SignInButton";
+import SignOutButton from "@/components/Buttons/SignOutButton";
 
 export const metadata: Metadata = {
-  title: "Frontline - Sign In",
-  description: "Sign in",
+  title: "Frontline - Organization Setup",
+  description: "Join or Create a Organization",
 };
 
 export default function RegisterLayout({
@@ -15,21 +15,18 @@ export default function RegisterLayout({
 }) {
   return (
     <div className="h-full flex flex-col justify-between register-bg bg-no-repeat bg-top bg-contain">
-      <HeaderContainer>
+    <HeaderContainer>
         <NavButton url="/">
           <p>Back</p>
         </NavButton>
         <p className="text-2xl font-bold uppercase tracking-widest">
-          Frontline
+          Setup
         </p>
         <nav>
-          <NavButton url={"/register"}>
-           <p>Register</p>
-          </NavButton>
+          <SignOutButton/>
         </nav>
       </HeaderContainer>
       {children}
-      <footer>Footer</footer>
     </div>
   );
 }

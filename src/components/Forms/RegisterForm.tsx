@@ -3,6 +3,8 @@ import { ChangeEvent, useState } from "react";
 import BaseInput from "../Inputs/BaseInputs";
 import { Button } from "@mui/base";
 import axios from "axios";
+import { redirect } from "next/navigation";
+import { useRouter } from 'next/navigation'
 
 type FormValue = {
   name: string;
@@ -12,6 +14,7 @@ type FormValue = {
 };
 
 export function RegisterForm() {
+  const router = useRouter();
   const [formValues, setFormValues] = useState<FormValue>({
     name: "",
     email: "",
@@ -22,13 +25,17 @@ export function RegisterForm() {
   const handleSubmit = async (event: any) => {
     event.preventDefault();
     try {
-      const res = await axios.post(
+      const { data } = await axios.post(
         "http://localhost:3000/api/register/",
         formValues
       );
+      const user = data.user
+      if (user) {
+        router.push("/auth/signin");
+      }
     } catch (error: any) {
       // I don't want this as any
-      // Store errors in a state?
+      // Need a state for errors to show any toasts
       console.log(error.response.data);
     }
   };

@@ -21,7 +21,6 @@ export const registerUser = (user: HashedUser): QueryConfig => {
     text: text,
     values: [name, email, password,]
   }
-  console.log(config)
   return config;
 }
 
