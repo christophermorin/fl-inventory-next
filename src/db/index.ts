@@ -2,11 +2,11 @@ import { Pool, QueryResult } from "pg";
 import type { QueryConfig } from "@/types/main";
 
 const config = {
-  user: process.env.DATABASE_USER!,
-  host: process.env.DATABASE_HOST!,
-  database: process.env.DATABASE_NAME!,
-  password: process.env.DATABASE_PASSWORD!,
-  port: Number(process.env.DATABASE_PORT)!,
+  user: process.env.POSTGRES_USER!,
+  host: process.env.POSTGRES_HOST!,
+  database: process.env.POSTGRES_NAME!,
+  password: process.env.POSTGRES_PASSWORD!,
+  port: Number(process.env.POSTGRES_PORT)!,
   // ssl: true,
   max: 20, // set pool max size to 20
   idleTimeoutMillis: 5000, // close idle clients after 1 second
