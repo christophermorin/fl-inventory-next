@@ -9,7 +9,7 @@ dotenv.config({ path: path.resolve(__dirname, './', '.env.development') });
 const PORT = process.env.PORT || 3000
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
-const baseURL = process.env.CI || 'http://localhost:3000';
+const baseURL = process.env.CI ? 'https://fl-inventory-next.vercel.app/' : 'http://localhost:3000';
 // Reference: https://playwright.dev/docs/test-configuration
 const config: PlaywrightTestConfig = {
   // Timeout per test
