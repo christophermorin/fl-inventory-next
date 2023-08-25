@@ -20,6 +20,8 @@ jobs:
       - name: Run Playwright tests
         env:
           POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD}}
+          POSTGRES_HOST: ${{ secrets.POSTGRES_HOST}}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_URL }}
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}

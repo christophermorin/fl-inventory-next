@@ -1,11 +1,14 @@
 import { Pool, QueryResult } from "pg";
 import type { QueryConfig } from "@/types/main";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const config = {
   user: "postgres",
-  host: "db.esbnvderiwrsilurlwkp.supabase.co",
+  host: process.env.POSTGRES_HOST,
   database: "postgres",
-  password: "s2bCgt6GMF0zEcJa",
+  password: process.env.POSTGRES_PASSWORD,
   port: 5432,
   // ssl: true,
   max: 20, // set pool max size to 20
