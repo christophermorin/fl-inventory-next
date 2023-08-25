@@ -49,7 +49,6 @@ export const authOptions: NextAuthOptions = {
   },
    callbacks: {
      jwt:({ token, user, trigger, session }) => {
-        // console.log("JWT Callback", { token, user});
        // Handles updates
        const u = user as User;
        if (trigger === "update" && session){
@@ -73,7 +72,6 @@ export const authOptions: NextAuthOptions = {
         return token;
       },
       session: ({ session, token}) => {
-        // console.log("Session Callback", { session, token})
         return {
           ...session,
           user: {

@@ -10,7 +10,6 @@ export async function isUnique (org_name: string): Promise<boolean> {
     return exists;
   } 
 
-
 export async function buildNewOrganization(org_name: string, userId: string): Promise<void> {
   try {
     await query(buildNewOrganizationQuery(org_name, userId))

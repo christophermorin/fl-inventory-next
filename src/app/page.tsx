@@ -1,10 +1,3 @@
-import {
-  LoginButton,
-  LogoutButton,
-  ProfileButton,
-  RegisterButton,
-} from "@/components/buttons.component";
-
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { User } from "@/components/user.component";
@@ -15,16 +8,9 @@ import SignOutButton from "@/components/Buttons/SignOutButton";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
-  // console.log("In session", session)
 
   return (
     <main
-    // style={{
-    //   display: "flex",
-    //   justifyContent: "center",
-    //   alignItems: "center",
-    //   height: "70vh",
-    // }}
     >
       <HeaderContainer>
         <p className="text-2xl font-bold uppercase tracking-widest">

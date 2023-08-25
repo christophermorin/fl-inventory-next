@@ -26,7 +26,7 @@ export function RegisterForm() {
     event.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/register/",
+        "https://fl-inventory-next.vercel.app/register/",
         formValues
       );
       const user = data.user

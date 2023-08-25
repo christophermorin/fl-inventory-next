@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import HeaderContainer from "@/components/Headers/HeaderContainer";
 import NavButton from "@/components/Buttons/NavButton";
-import SignInButton from "@/components/Buttons/SignInButton";
 
 export const metadata: Metadata = {
   title: "Frontline - Sign In",

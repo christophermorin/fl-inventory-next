@@ -27,7 +27,7 @@ export default function CreateOrgForm({ userId }: { userId: string | null }) {
     };
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/organization_setup/create",
+        "https://fl-inventory-next.vercel.app/api/organization_setup/create",
         payload
       );
       update({roles: "admin", organization: formValues.organization})

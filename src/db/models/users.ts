@@ -1,5 +1,6 @@
 import type { QueryConfig, HashedUser } from "@/types/main"
 
+// Find user in database
 export const findUniqueUser = (email: string): QueryConfig  => {
   const text = `SELECT * FROM users WHERE email = $1;`
 
@@ -24,6 +25,7 @@ export const registerUser = (user: HashedUser): QueryConfig => {
   return config;
 }
 
+// Update user roles and organization on creating an org
 export const updateUserOnCreateOrganizationQuery = (org_name: string, userId: string): QueryConfig => {
   const text = `UPDATE users
     SET roles = ARRAY[$1], organization = $2

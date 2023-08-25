@@ -1,7 +1,6 @@
 import Link from "next/link";
 import OrgSetupCard from "@/components/Cards/OrgSetupCard";
 
-
 export default function OrganizationSetup() {
   return (
     <div className="h-full flex flex-col md:flex-row justify-center items-center gap-10 p-8">
