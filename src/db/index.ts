@@ -14,8 +14,6 @@ const config = {
   maxUses: 7500, // close (and replace) a connection after it has been used 7500 times 
 };
 
-console.log(process.env.NODE_ENV)
-
 export const pool = new Pool(config);
 
 export const query = async (config: QueryConfig): Promise<QueryResult> => {

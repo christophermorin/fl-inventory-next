@@ -25,7 +25,6 @@ export const authOptions: NextAuthOptions = {
          if (!credentials?.email || !credentials.password) {
           return null;
         }
-        console.log(credentials)
         const results = await query(findUniqueUser(credentials.email))
         const user: User = results.rows[0];
 

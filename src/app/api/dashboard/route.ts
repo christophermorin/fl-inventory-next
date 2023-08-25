@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 import { getToken } from 'next-auth/jwt';
 
 export async function GET(request: Request, organization: string) {
-  console.log("in route")
   const session = await getServerSession(authOptions);
   if (!session?.user?.organization){
     return NextResponse.json({

@@ -3,7 +3,6 @@ import { ChangeEvent, useState } from "react";
 import BaseInput from "../Inputs/BaseInputs";
 import { Button } from "@mui/base";
 import axios from "axios";
-import { redirect } from "next/navigation";
 import { useRouter } from 'next/navigation'
 
 type FormValue = {
@@ -26,7 +25,7 @@ export function RegisterForm() {
     event.preventDefault();
     try {
       const { data } = await axios.post(
-        "https://fl-inventory-next.vercel.app/register/",
+        "http://localhost:3000/api/register/",
         formValues
       );
       const user = data.user

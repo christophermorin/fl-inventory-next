@@ -1,14 +1,16 @@
 import { PlaywrightTestConfig, devices } from '@playwright/test'
 import path from 'path';
+import dotenv from 'dotenv';
+
+// Use development env variables
+dotenv.config({ path: path.resolve(__dirname, './', '.env.development') });
 
 // Use process.env.PORT by default and fallback to port 3000
 const PORT = process.env.PORT || 3000
 
-// STORAGE STATE
-export const STORAGE_STATE = path.join(__dirname, 'tests/utils/.auth/user.json');
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
-const baseURL = `http://localhost:${PORT}`
-
+// const baseURL = `http://localhost:${PORT}`
+const baseURL = process.env.BASE_URL;
 // Reference: https://playwright.dev/docs/test-configuration
 const config: PlaywrightTestConfig = {
   // Timeout per test
