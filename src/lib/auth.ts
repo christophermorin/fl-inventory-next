@@ -43,34 +43,44 @@ export const authOptions: NextAuthOptions = {
       }
     }),
   ],
+  pages: {
+      signIn: '/auth/signin',
+  },
    callbacks: {
-    session: ({ session, token }) => {
-      // console.log("Session Callback", { session, token }) 
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: token.id,
-          roles: token.roles,
-          oraganization: token.organization
-        },
-      };
-    },
-    jwt: ({ token, user }) => {
-      // console.log("JWT Callback", { token, user });
-      if (user) {
-        const u = user as User;
+     jwt:({ token, user, trigger, session }) => {
+       // Handles updates
+       const u = user as User;
+       if (trigger === "update" && session){
         return {
           ...token,
-          id: u.id,
-          name: u.name,
-          email: u.email,
-          roles: u.roles,
-          organization: u.organization,
-        };
+           roles: session.roles,
+           organization: session.organization,
+        }
       }
-      return token;
+      // Handles Signin
+       if (user) {
+         return {
+           ...token,
+           id: u.id,
+           name: u.name,
+           email: u.email,
+           roles: u.roles,
+           organization: u.organization,
+          };
+        }
+        return token;
+      },
+      session: ({ session, token}) => {
+        return {
+          ...session,
+          user: {
+            ...session.user,
+            id: token.id,
+            roles: token.roles,
+            organization: token.organization
+          },
+        };
+      },
     },
-  },
-};
+  };
 

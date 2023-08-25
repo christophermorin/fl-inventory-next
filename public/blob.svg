@@ -1,0 +1,16 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- First ink stain blob -->
+    <path d="M120 234 Q256 230 130 300 C250 400 150 400 100 300 Z" fill="black" />
+    <circle cx="150" cy="200" r="25" fill="white" />
+    <circle cx="232" cy="280" r="20" fill="white" />
+
+    <!-- Second ink stain blob -->
+    <path d="M400 200 Q500 50 550 200 C500 300 400 300 350 200 Z" fill="black" />
+    <circle cx="320" cy="125" r="30" fill="white" />
+    <circle cx="653" cy="250" r="25" fill="white" />
+
+    <!-- Third ink stain blob -->
+    <path d="M50 100 Q150 10 250 100 C200 200 100 200 50 100 Z" fill="black" />
+    <circle cx="234" cy="60" r="15" fill="white" />
+    <circle cx="145" cy="150" r="10" fill="white" />
+</svg>
