@@ -26,9 +26,10 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         env:
+          DATABASE_URL: ${{ secrets.POSTGRES_URL }}
           NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_URL }}
-          DATABASE_URL: ${{ secrets.POSTGRES_URL }}
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
         run: npm run test
       - uses: actions/upload-artifact@v3
         if: always()
