@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000
 
 // Set webServer.url and use.baseURL with the location of the WebServer respecting the correct set port
 // const baseURL = `http://localhost:${PORT}`
-const baseURL = process.env.BASE_URL;
+const baseURL = process.env.CI || 'http://localhost:3000';
 // Reference: https://playwright.dev/docs/test-configuration
 const config: PlaywrightTestConfig = {
   // Timeout per test

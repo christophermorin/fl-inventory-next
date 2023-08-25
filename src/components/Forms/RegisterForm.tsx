@@ -23,9 +23,11 @@ export function RegisterForm() {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+    const API_URL = process.env.NEXT_PUBLIC_API_URL;
+    console.log(API_URL)
     try {
       const { data } = await axios.post(
-        "http://localhost:3000/api/register/",
+        `${API_URL}/api/register/`,
         formValues
       );
       const user = data.user
