@@ -4,6 +4,15 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+env:
+  NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+  NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
+  POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
+  POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+  POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+  POSTGRES_NAME: ${{ secrets.POSTGRES_NAME }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
 jobs:
   test:
     timeout-minutes: 60
@@ -21,15 +30,6 @@ jobs:
           --health-retries 5
         ports:
           - 5432:5432
-    env:
-      NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-      NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-      POSTGRES_URL: ${{ secrets.POSTGRES_URL }}
-      POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-      POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
-      POSTGRES_NAME: ${{ secrets.POSTGRES_NAME }}
-      POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-      POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
