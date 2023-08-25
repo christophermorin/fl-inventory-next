@@ -2,7 +2,7 @@ import { Pool, QueryResult } from "pg";
 import type { QueryConfig } from "@/types/main";
 import dotenv from "dotenv";
 
-dotenv.config();
+// dotenv.config();
 
 const config = {
   user: "postgres",
