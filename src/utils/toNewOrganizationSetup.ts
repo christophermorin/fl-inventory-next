@@ -2,7 +2,6 @@ import { isString } from "./typeGuards";
 import type { OrganizationSetup } from "@/types/main";
 
 const parseUserId = (userId: unknown): string => {
-  // Make further checks/restrictions
   if (!isString(userId) || userId.length != 36) {
     throw new Error("Incorrect or missing userId");
   }

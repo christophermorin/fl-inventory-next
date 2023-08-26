@@ -15,15 +15,13 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="h-full flex flex-col justify-between register-bg bg-no-repeat bg-top bg-contain">
-    <HeaderContainer>
+      <HeaderContainer>
         <NavButton url="/">
           <p>Back</p>
         </NavButton>
-        <p className="text-2xl font-bold uppercase tracking-widest">
-          Setup
-        </p>
+        <p className="text-2xl font-bold uppercase tracking-widest">Setup</p>
         <nav>
-          <SignOutButton/>
+          <SignOutButton />
         </nav>
       </HeaderContainer>
       {children}

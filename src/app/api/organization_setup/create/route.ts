@@ -6,20 +6,20 @@ import { updateUserOnNewOrg } from "@/services/usersServices";
 export async function POST(request: Request) {
   try {
     // verify user input
-    const userInput = await request.json()
-    const {userId, organization} = toNewOrganizatioSetup(userInput);
+    const userInput = await request.json();
+    const { userId, organization } = toNewOrganizatioSetup(userInput);
     // check if org is unique, throw error if not
     await isUnique(organization);
-    await buildNewOrganization(organization, userId)
+    await buildNewOrganization(organization, userId);
     await updateUserOnNewOrg(organization, userId);
     // update user roles/org fields
     return NextResponse.json({
-      success: true
+      success: true,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return NextResponse.json({
-      success: false
+      success: false,
     });
   }
 }

@@ -2,9 +2,8 @@ import type { NextAuthOptions } from "next-auth";
 import type { User, SanitizedUser } from "@/types/main";
 import { query } from "@/db";
 import { findUniqueUser } from "@/db/models/users";
-import { compareSync}  from "bcrypt"
+import { compareSync } from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
-
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -22,13 +21,13 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-         if (!credentials?.email || !credentials.password) {
+        if (!credentials?.email || !credentials.password) {
           return null;
         }
-        const results = await query(findUniqueUser(credentials.email))
+        const results = await query(findUniqueUser(credentials.email));
         const user: User = results.rows[0];
 
-        if (!user || !(compareSync(credentials.password, user.password))) {
+        if (!user || !compareSync(credentials.password, user.password)) {
           return null;
         }
         const sanitizedUser: SanitizedUser = {
@@ -36,51 +35,50 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           roles: user.roles,
-          organization: user.organization
-        }
+          organization: user.organization,
+        };
 
         return sanitizedUser;
-      }
+      },
     }),
   ],
   pages: {
-      signIn: '/auth/signin',
+    signIn: "/auth/signin",
   },
-   callbacks: {
-     jwt:({ token, user, trigger, session }) => {
-       // Handles updates
-       const u = user as User;
-       if (trigger === "update" && session){
+  callbacks: {
+    jwt: ({ token, user, trigger, session }) => {
+      // Handles updates
+      const u = user as User;
+      if (trigger === "update" && session) {
         return {
           ...token,
-           roles: session.roles,
-           organization: session.organization,
-        }
+          roles: session.roles,
+          organization: session.organization,
+        };
       }
       // Handles Signin
-       if (user) {
-         return {
-           ...token,
-           id: u.id,
-           name: u.name,
-           email: u.email,
-           roles: u.roles,
-           organization: u.organization,
-          };
-        }
-        return token;
-      },
-      session: ({ session, token}) => {
+      if (user) {
         return {
-          ...session,
-          user: {
-            ...session.user,
-            id: token.id,
-            roles: token.roles,
-            organization: token.organization
-          },
+          ...token,
+          id: u.id,
+          name: u.name,
+          email: u.email,
+          roles: u.roles,
+          organization: u.organization,
         };
-      },
+      }
+      return token;
     },
-  };
-
+    session: ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          roles: token.roles,
+          organization: token.organization,
+        },
+      };
+    },
+  },
+};

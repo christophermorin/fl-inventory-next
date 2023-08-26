@@ -36,6 +36,7 @@
     "@playwright/test": "^1.37.1",
     "@types/bcrypt": "^5.0.0",
     "@types/validator": "^13.11.1",
+    "eslint-config-prettier": "^9.0.0",
     "ts-node": "^10.9.1"
   }
 }

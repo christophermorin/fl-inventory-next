@@ -20,7 +20,7 @@ export function SignInForm() {
   const [error, setError] = useState("");
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
-  
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -56,7 +56,10 @@ export function SignInForm() {
   };
   return (
     <div className="mt-4 flex flex-col items-center">
-      <form onSubmit={onSubmit} className="px-4 py-10 flex flex-col gap-4 shadow-md shadow-slate-300">
+      <form
+        onSubmit={onSubmit}
+        className="px-4 py-10 flex flex-col gap-4 shadow-md shadow-slate-300"
+      >
         <BaseInput
           type="email"
           name="email"
@@ -73,8 +76,13 @@ export function SignInForm() {
           placeholder="Password"
           ariaLabel="Password"
         />
-      <Button type="submit" className="
-          w-40 mt-4 cursor-pointer disabled:cursor-not-allowed text-md bg-black text-white rounded-md font-semibold px-4 py-2 border-none disabled:opacity-50">Sign In</Button>
+        <Button
+          type="submit"
+          className="
+          w-40 mt-4 cursor-pointer disabled:cursor-not-allowed text-md bg-black text-white rounded-md font-semibold px-4 py-2 border-none disabled:opacity-50"
+        >
+          Sign In
+        </Button>
       </form>
     </div>
   );

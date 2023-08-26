@@ -3,7 +3,7 @@ import { ChangeEvent, useState } from "react";
 import BaseInput from "../Inputs/BaseInputs";
 import { Button } from "@mui/base";
 import axios from "axios";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 type FormValue = {
   name: string;
@@ -25,11 +25,8 @@ export function RegisterForm() {
     event.preventDefault();
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
     try {
-      const { data } = await axios.post(
-        `${API_URL}/api/register/`,
-        formValues
-      );
-      const user = data.user
+      const { data } = await axios.post(`${API_URL}/api/register/`, formValues);
+      const user = data.user;
       if (user) {
         router.push("/auth/signin");
       }
@@ -83,8 +80,13 @@ export function RegisterForm() {
           ariaLabel="Confirmation"
         />
       </form>
-      <Button className="
-          w-40 mt-4 cursor-pointer disabled:cursor-not-allowed text-md bg-black text-white rounded-md font-semibold px-4 py-2 border-none disabled:opacity-50" onClick={handleSubmit}>Register</Button>
+      <Button
+        className="
+          w-40 mt-4 cursor-pointer disabled:cursor-not-allowed text-md bg-black text-white rounded-md font-semibold px-4 py-2 border-none disabled:opacity-50"
+        onClick={handleSubmit}
+      >
+        Register
+      </Button>
     </div>
   );
 }
