@@ -23,7 +23,7 @@ export default function RegisterLayout({
         </p>
         <nav>
           <NavButton url={"/register"}>
-           <p>Register</p>
+            <p>Register</p>
           </NavButton>
         </nav>
       </HeaderContainer>

@@ -4,19 +4,19 @@ export type QueryConfig = {
 };
 
 export type UserRegistration = {
-  name: string,
-  email: string,
-  password: string,
-  confirmation: string
-}
+  name: string;
+  email: string;
+  password: string;
+  confirmation: string;
+};
 
 export type User = {
-  id: string,
-  name: string,
-  email: string,
-  password: string,
-  roles: Array<string>,
-  organization: string,
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  roles: Array<string>;
+  organization: string;
 };
 
 export type HashedUser = Omit<User, "id" | "roles" | "organization">;
@@ -24,6 +24,6 @@ export type HashedUser = Omit<User, "id" | "roles" | "organization">;
 export type SanitizedUser = Omit<User, "password">;
 
 export type OrganizationSetup = {
-  userId: string,
-  organization: string
-}
+  userId: string;
+  organization: string;
+};

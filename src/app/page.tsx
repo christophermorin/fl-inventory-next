@@ -10,8 +10,7 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
 
   return (
-    <main
-    >
+    <main>
       <HeaderContainer>
         <p className="text-2xl font-bold uppercase tracking-widest">
           Frontline

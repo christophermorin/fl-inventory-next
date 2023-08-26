@@ -4,24 +4,20 @@ import OrgSetupCard from "@/components/Cards/OrgSetupCard";
 export default function OrganizationSetup() {
   return (
     <div className="h-full flex flex-col md:flex-row justify-center items-center gap-10 p-8">
-      <Link
-      href="/organization_setup/join"
-      >
-      <OrgSetupCard
-        title="Join Org"
-        image={joinOrgImg}
-        text="Join an existing org with your invite code"
-      />
-      </Link>
-      <Link
-      href="/organization_setup/create"
-      >
-      <OrgSetupCard
-        title="Create Org"
-        image={newOrgImg}
-        text="Create a new organization and invite others to join."
+      <Link href="/organization_setup/join">
+        <OrgSetupCard
+          title="Join Org"
+          image={joinOrgImg}
+          text="Join an existing org with your invite code"
         />
-        </Link>
+      </Link>
+      <Link href="/organization_setup/create">
+        <OrgSetupCard
+          title="Create Org"
+          image={newOrgImg}
+          text="Create a new organization and invite others to join."
+        />
+      </Link>
     </div>
   );
 }

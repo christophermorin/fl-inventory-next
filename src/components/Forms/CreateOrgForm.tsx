@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import axios from "axios";
-import { useSession } from "next-auth/react"
+import { useSession } from "next-auth/react";
 // Org name
 // Location
 // Website?
@@ -14,13 +14,13 @@ type FormValues = {
 };
 
 export default function CreateOrgForm({ userId }: { userId: string | null }) {
-  const { data: session, status, update } = useSession()
+  const { data: session, status, update} = useSession();
   const [formValues, setFormValues] = useState<FormValues>({
     organization: "",
   });
 
   const handleSubmit = async (event: any) => {
-    event.preventDefault()
+    event.preventDefault();
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const payload = {
       userId,
@@ -31,7 +31,7 @@ export default function CreateOrgForm({ userId }: { userId: string | null }) {
         `${API_URL}api/organization_setup/create`,
         payload
       );
-      update({roles: "admin", organization: formValues.organization})
+      update({ roles: "admin", organization: formValues.organization });
     } catch (error) {
       console.log(error);
     }

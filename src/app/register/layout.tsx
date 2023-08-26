@@ -23,7 +23,7 @@ export default function RegisterLayout({
           Frontline
         </p>
         <nav>
-          <SignInButton/>
+          <SignInButton />
         </nav>
       </HeaderContainer>
       {children}
