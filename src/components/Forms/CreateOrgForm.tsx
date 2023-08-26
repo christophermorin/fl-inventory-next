@@ -28,7 +28,7 @@ export default function CreateOrgForm({ userId }: { userId: string | null }) {
     };
     try {
       const res = await axios.post(
-        `${API_URL}api/organization_setup/create`,
+        `${API_URL}/api/organization_setup/create`,
         payload
       );
       update({ roles: "admin", organization: formValues.organization });
