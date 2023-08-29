@@ -21,14 +21,13 @@ export default function CreateOrgForm({ userId }: { userId: string | null }) {
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    const API_URL = process.env.NEXT_PUBLIC_API_URL;
     const payload = {
       userId,
       ...formValues,
     };
     try {
       const res = await axios.post(
-        `${API_URL}/api/organization_setup/create`,
+        `/api/organization_setup/create`,
         payload
       );
       update({ roles: "admin", organization: formValues.organization });

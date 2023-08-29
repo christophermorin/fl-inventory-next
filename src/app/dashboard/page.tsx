@@ -9,6 +9,7 @@ export default async function Dashboard() {
   if (userOrganization === null) {
     redirect("/organization_setup");
   }
+  
   return (
     <div className="h-full">
       {/* Extract */}
@@ -19,10 +20,14 @@ export default async function Dashboard() {
             <p className="font-bold">Inventory:</p>
             <p>@ Org Wide</p>
           </div>
-          <InventoryTable />
+          <InventoryTable organizationId={userOrganization}/>
         </section>
         {/* Requests Box */}
-        <section className="md:row-span-4 md:col-span-1 shadow-md shadow-slate-300"></section>
+        <section className="md:row-span-4 md:col-span-1 shadow-md shadow-slate-300">
+          <div className="p-2 flex rounded-t-md">
+            <p className="font-bold">Events</p>
+          </div>
+        </section>
         {/* History Box */}
         <section className="md:row-span-2 md:col-span-3 shadow-md  shadow-slate-900">
            <div className="p-2 flex rounded-t-md">
@@ -31,7 +36,12 @@ export default async function Dashboard() {
           <HistoryTable />
         </section>
         {/* Alters Box */}
-        <section className="md:row-span-2 md:col-span-2 border shadow-md shadow-slate-300"></section>
+        <section className="md:row-span-2 md:col-span-2 shadow-md shadow-slate-900">
+          <div className="p-2 flex justify-center gap-4 rounded-t-md">
+            <p className="font-bold">Alerts</p>
+            <p className="font-bold">Financials</p>
+          </div>
+        </section>
       </DashboardContainer>
     </div>
   );

@@ -10,8 +10,8 @@ export async function POST(request: Request) {
     const { userId, organization } = toNewOrganizatioSetup(userInput);
     // check if org is unique, throw error if not
     await isUnique(organization);
-    await buildNewOrganization(organization, userId);
-    await updateUserOnNewOrg(organization, userId);
+    const { id } = await buildNewOrganization(organization, userId);
+    await updateUserOnNewOrg(id, userId);
     // update user roles/org fields
     return NextResponse.json({
       success: true,

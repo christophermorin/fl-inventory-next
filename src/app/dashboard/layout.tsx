@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import SignOutButton from "@/components/Buttons/SignOutButton";
 
 export const metadata: Metadata = {
   title: "Frontline - Dashboard",
@@ -28,7 +29,7 @@ export default async function DashboardLayout({
         </ul>
         <ul className="self-end font-bold p-4">
           <li>Settings</li>
-          <li>Sign Out</li>
+          <li><SignOutButton/></li>
         </ul>
       </div>
       {children}
