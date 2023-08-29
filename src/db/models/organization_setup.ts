@@ -17,7 +17,7 @@ export const buildNewOrganizationQuery = (
   org_name: string,
   userId: string
 ): QueryConfig => {
-  const text = `INSERT INTO organizations (org_name, members) VALUES ($1, ARRAY[$2]::uuid[])`;
+  const text = `INSERT INTO organizations (org_name, members) VALUES ($1, ARRAY[$2]::uuid[]) RETURNING id;`;
 
   const config = {
     text: text,
