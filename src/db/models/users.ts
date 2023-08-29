@@ -27,7 +27,7 @@ export const registerUser = (user: HashedUser): QueryConfig => {
 
 // Update user roles and organization on creating an org
 export const updateUserOnCreateOrganizationQuery = (
-  org_name: number,
+  org_Id: number,
   userId: string
 ): QueryConfig => {
   const text = `UPDATE users
@@ -36,7 +36,7 @@ export const updateUserOnCreateOrganizationQuery = (
 
   const config = {
     text: text,
-    values: ["admin", org_name, userId],
+    values: ["admin", org_Id, userId],
   };
 
   return config;

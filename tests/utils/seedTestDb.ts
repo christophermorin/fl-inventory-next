@@ -4,7 +4,7 @@ import { hashSync } from "bcrypt";
 
 export default async function seedTestDb() {
   await query(seedOrgSetupUser());
-  await query(seedDashBoardUser());
+  // await query(seedDashBoardUser());
 }
 
 const seedOrgSetupUser = (): QueryConfig => {
@@ -20,23 +20,17 @@ const seedOrgSetupUser = (): QueryConfig => {
   return queryConfig;
 };
 
-const seedDashBoardUser = (): QueryConfig => {
-  const saltRounds = 10;
-  const hashedPassword = hashSync("pAssword123!", saltRounds);
+// const seedDashBoardUser = (): QueryConfig => {
+//   const saltRounds = 10;
+//   const hashedPassword = hashSync("pAssword123!", saltRounds);
 
-  const text = `INSERT INTO users (name, email, password, roles, organization)
-    VALUES ($1, $2, $3, ARRAY[$4], $5);`;
+//   const text = `INSERT INTO users (name, email, password, roles, organization)
+//     VALUES ($1, $2, $3, ARRAY[$4]);`;
 
-  const queryConfig: QueryConfig = {
-    text: text,
-    values: [
-      "dashBoard",
-      "dashBoard@mail.com",
-      hashedPassword,
-      "admin",
-      "DashBoard Route Test",
-    ],
-  };
+//   const queryConfig: QueryConfig = {
+//     text: text,
+//     values: ["dashBoard", "dashBoard@mail.com", hashedPassword, "admin", 42],
+//   };
 
-  return queryConfig;
-};
+//   return queryConfig;
+// };
